@@ -17,7 +17,6 @@ def fibs():
     elif n == 1 or n == 2:
         print [i for i in range(0, n)]
     else:
-        list_ = [0, 1]
         while len(list_) < n + 1:
             list_.append(list_[-2] + list_[-1])
         print list_
