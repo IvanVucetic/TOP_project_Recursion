@@ -2,7 +2,7 @@
 # members of the fibonacci sequence. Use iteration for this solution.
 
 def fibs():
-    list_ = []
+    list_ = [0, 1]
     print "Please enter the length of the fibonacci sequence: "
     n = raw_input("> ")
 
@@ -11,19 +11,23 @@ def fibs():
     except ValueError, e:
         print "You must enter a positive integer."
     
+    ## MOST IMPORTANT PART ##
     if n <= 0:
         print "The length must be positive integer."
-    elif n == 1:
-        list_.append(0)
-        print list_
-    elif n == 2:
-        list_.extend([0, 1]) # unlike append allows multiple elements
-        print list_
+    elif n == 1 or n == 2:
+        print [i for i in range(0, n)]
     else:
         list_ = [0, 1]
-        for i in range(3, n+1):
-            new_elem = list_[i-3] + list_[i-2] # prvi elem je zapravo nulti
-            list_.append(new_elem)
+        while len(list_) < n + 1:
+            list_.append(list_[-2] + list_[-1])
         print list_
 
-#fibs()
+fibs()
+
+
+# Now write another method #fibs_rec which solves 
+# the same problem recursively.
+
+#def fibs_rec(n):
+
+
