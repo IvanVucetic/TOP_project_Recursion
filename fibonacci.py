@@ -36,24 +36,22 @@ def fibs():
 # the same problem recursively.
 
 def fibs_rec(n):
-    list_ = [0, 1]
-
-    try:
-        n = int(n)
-    except ValueError, e:
-        print "You must enter a positive integer."
-
-    ## MOST IMPORTANT PART ##
     if n <= 0:
         print "The length must be positive integer."
-    elif n == 1 or n == 2:
-        print [i for i in range(0, n)]
-        return list_
+    elif n <= 2:
+        return n-1
     else:
-        fibs_rec(n-1)
-        x = list_[-2] + list_[-1]
-        list_.append(x)
-        return list_
+        return(fibs_rec(n-2) + fibs_rec(n-1))
 
-a = fibs_rec(4)
-print a
+
+print "Say the number:"
+num = raw_input("> ")
+
+try:
+    num = int(num)
+except ValueError, e:
+    print "You must enter a positive integer."
+    raise SystemExit
+
+for i in range(num+1):
+    print fibs_rec(i)
